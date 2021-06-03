@@ -1,0 +1,23 @@
+package jihe;
+
+
+import java.util.ArrayList;
+
+public class Driver {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+Dao dao=new Dao();
+ArrayList<Student> listStudent = dao.inputStudent();
+
+ArrayList<Course> listCourse = dao.inputCourse();
+
+ArrayList<Student> listStudentResult = dao.processByStudent(listStudent, listCourse);
+ArrayList<CourseResult> listCourseResult= dao.processByCourse(listStudentResult, listCourse);
+
+
+dao.print(listStudentResult, listCourseResult);
+
+}
+
+}
