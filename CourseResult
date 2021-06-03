@@ -1,0 +1,34 @@
+package jihe;
+
+
+public class CourseResult {
+private String courseName;
+private float avg;
+public CourseResult() {
+super();
+// TODO Auto-generated constructor stub
+}
+public CourseResult(String courseName, float avg) {
+super();
+this.courseName = courseName;
+this.avg = avg;
+}
+public String getCourseName() {
+return courseName;
+}
+public void setCourseName(String courseName) {
+this.courseName = courseName;
+}
+public float getAvg() {
+return avg;
+}
+public void setAvg(float avg) {
+this.avg = avg;
+}
+@Override
+public String toString() {
+return courseName + "\t" + avg;
+}
+
+
+}
