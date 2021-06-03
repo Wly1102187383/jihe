@@ -1,0 +1,43 @@
+package jihe;
+
+
+public class Result {
+private String province;
+private int count;
+private String Details;
+
+
+public Result() {
+super();
+}
+public Result(String province, int count, String details) {
+super();
+this.province = province;
+this.count = count;
+Details = details;
+}
+
+public String getProvince() {
+return province;
+}
+public void setProvince(String province) {
+this.province = province;
+}
+public int getCount() {
+return count;
+}
+public void setCount(int count) {
+this.count = count;
+}
+public String getDetails() {
+return Details;
+}
+public void setDetails(String details) {
+Details = details;
+}
+public String toString(){
+String info = "";
+info = info + this.province + ":" + this.count + "人 (" + this.Details + ")";
+return info;
+}
+}
