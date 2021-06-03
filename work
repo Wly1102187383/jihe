@@ -1,0 +1,88 @@
+package jihe;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Dao {
+public ArrayList<Student> inputStudent(){
+ArrayList<Student> listStudent = new ArrayList<Student>();
+Scanner scan = new Scanner(System.in);
+String aLine = "";
+while(!(aLine = scan.nextLine()).equals("end")) {
+String arr[] = aLine.split(",|，");
+String id = arr[0];
+String name = arr[1];
+String gender = arr[2];
+Student stu = new Student(id, name, gender);
+listStudent.add(stu);
+}
+
+return listStudent;
+}
+
+public ArrayList<Course>inputCourse(){
+ArrayList<Course> listCourse = new ArrayList<Course>();
+Scanner scan = new Scanner(System.in);
+String aLine = "";
+while(!(aLine = scan.nextLine()).equals("end")) {
+String arr[] = aLine.split(",|，");
+String id = arr[0];
+String courseName = arr[1];
+float grade = Float.parseFloat(arr[2]);
+Course cou = new Course(id, courseName, grade);
+listCourse.add(cou);
+}
+
+return listCourse;
+}
+
+public ArrayList<Student> processByStudent(ArrayList<Student> listStudent,
+ArrayList<Course> listCourse){
+for(int i = 0; i < listStudent.size(); i++) {
+int count = 0;
+float sum = 0;
+for(int j = 0; j < listCourse.size(); j++) {
+if(listCourse.get(j).getId().equals(listStudent.get(i).getId())) {
+count++;
+sum += listCourse.get(j).getGrade();
+}
+}
+listStudent.get(i).setAvg(sum / count);
+}
+
+
+return listStudent;
+}
+
+public ArrayList<CourseResult>processByCourse(ArrayList<Student> listStudent,
+ArrayList<Course> listCourse){
+ArrayList<CourseResult> listCourseResult = new ArrayList<CourseResult>();
+int i = listCourse.size() / listStudent.size();
+for(int j = 0; j < i; j++) {
+String courseName = listCourse.get(4 * j).getCourseName();
+float sum = 0;
+int count = 0;
+for(int k = 4 * j; count < 4; k++) {
+sum += listCourse.get(k).getGrade();
+count++;
+}
+float ave = sum / listStudent.size();
+CourseResult cor = new CourseResult(courseName, ave);
+listCourseResult.add(cor);
+}
+
+return listCourseResult;
+}
+
+public void print(ArrayList<Student> listStudent,ArrayList<CourseResult> listResult){
+System.out.println("按学生统计：");
+System.out.println("学号\t姓名\t性别\t平均分");
+for(int i = 0; i < listStudent.size(); i++)
+System.out.println(listStudent.get(i).toString());
+System.out.println("按课程统计：");
+System.out.println("课程\t平均分");
+for(int j = 0; j < listResult.size(); j++) 
+System.out.println(listResult.get(j).toString());
+}
+
+}
